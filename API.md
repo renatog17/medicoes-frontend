@@ -15,6 +15,8 @@ Configure `SPRING_DATASOURCE_URL`, `SPRING_DATASOURCE_USERNAME` e
 | `/instalacoes/{id}/encerramento` | POST |
 | `/medicoes` | POST para criar; GET para listar |
 | `/medicoes/{id}` | GET |
+| `/faturas` | GET para listar |
+| `/faturas/{id}` | GET |
 
 POST de criação retorna 201 com Location. PUT substitui os campos editáveis;
 campos opcionais omitidos ficam nulos. DELETE retorna 204 e é bloqueado quando
@@ -217,3 +219,12 @@ Exemplo de conflito de sequência:
 ```
 
 No encerramento, `dataFim` anterior à última medição retorna 400.
+
+## Faturas
+
+`GET /api/faturas?page=0&size=20&competencia=<valor>` lista faturas de forma
+paginada. A interface também permite omitir `competencia` para consultar todas
+as faturas. `GET /api/faturas/{id}` consulta uma fatura por ID. A coleção do
+Postman não define exemplos de resposta nem operações para criar, editar ou
+excluir faturas; por isso, a interface exibe os campos retornados pela API e
+oferece somente consulta.

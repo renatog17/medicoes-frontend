@@ -1,6 +1,6 @@
 import { test } from 'node:test'
 import assert from 'node:assert/strict'
-import { reading, measurementBody } from '../src/measurements.js'
+import { reading, measurementBody } from '../src/utils/measurements.js'
 
 test('leitura mantém precisão máxima e rejeita arredondamento implícito', () => {
   assert.equal(reading('9999999999999,999999'), '9999999999999.999999')

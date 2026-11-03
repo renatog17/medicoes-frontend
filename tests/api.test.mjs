@@ -1,8 +1,10 @@
 ﻿import { test } from 'node:test'
 import assert from 'node:assert/strict'
 import { readFile } from 'node:fs/promises'
-const source = (await readFile(new URL('../src/api.js', import.meta.url), 'utf8')).replace('import.meta.env.VITE_API_BASE_URL', "'/api'")
-const { api, pageData, validCpf } = await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'))
+import { validCpf } from '../src/utils/validation.js'
+import { pageData } from '../src/utils/pagination.js'
+const source = (await readFile(new URL('../src/services/api.js', import.meta.url), 'utf8')).replace('import.meta.env.VITE_API_BASE_URL', "'/api'")
+const { api } = await import('data:text/javascript;base64,' + Buffer.from(source).toString('base64'))
 
 test('medições preservam decimais e os detalhes de validação', async () => {
  const original = globalThis.fetch
